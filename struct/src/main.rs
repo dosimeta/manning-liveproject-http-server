@@ -1,9 +1,14 @@
+use crate::Lang::SwissGerman;
+
 #[derive(Debug)]
+#[derive(PartialEq)]
 enum Lang {
   English,
   Spanish,
   Chinese,
   Texan,
+  German,
+  SwissGerman,
 }
 
 struct Greeting {
@@ -22,8 +27,14 @@ fn main() {
   v.push(g);
   let g : Greeting = Greeting { lang: Lang::Chinese, message: String::from("WasmEdge 你好!") };
   v.push(g);
+  let g : Greeting = Greeting { lang: Lang::German, message: String::from("Hallo WasmEdge!") };
+  v.push(g);
+  let g : Greeting = Greeting { lang: Lang::SwissGerman, message: String::from("Grüezi WasmEdge!") };
+  v.push(g);
 
   for e in v {
-    println!("{:?} {}", e.lang, e.message);
+    if e.lang == SwissGerman {
+      println!("{:?} {}", e.lang, e.message);
+    }
   }
 }
